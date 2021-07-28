@@ -10,9 +10,13 @@ import android.widget.TextView;
 
 import com.example.festafimdeano.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHolder mViewHolder = new ViewHolder();
+    private static SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.mViewHolder.buttonConfirm = findViewById(R.id.button_confirm);
 
         this.mViewHolder.buttonConfirm.setOnClickListener(this);
+
+        this.mViewHolder.textToday.setText(SIMPLE_DATE_FORMAT.format(Calendar.getInstance().getTime()));
+        String daysLeft = String.format("%s %s", String.valueOf(this.getDaysLeft()), getString(R.string.dias));
+        this.mViewHolder.textDaysLeft.setText(daysLeft);
     }
 
     @Override
@@ -32,6 +40,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this, DetailsActivity.class);
             startActivity(intent);
         }
+    }
+
+    private int getDaysLeft() {
+        // Data de hoje
+        Calendar calendarToday = Calendar.getInstance();
+        int today = calendarToday.get(Calendar.DAY_OF_YEAR);
+
+        // Dia máximo do ano
+        Calendar calendarLastDay = Calendar.getInstance();
+        int dayMax = calendarLastDay.getActualMaximum(Calendar.DAY_OF_YEAR);
+
+        return dayMax - today;
     }
 
     private static class ViewHolder {
