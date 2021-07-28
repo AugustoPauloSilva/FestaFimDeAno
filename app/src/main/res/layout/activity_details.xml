@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:padding="8dp"
-    tools:context=".DetailsActivity">
+    tools:context=".view.DetailsActivity">
 
     <TextView
         android:id="@+id/text_participate"
@@ -14,7 +14,7 @@
         android:layout_margin="30dp"
         android:gravity="center"
         android:text="@string/voce_vai_participar"
-        android:textSize="28dp" />
+        android:textSize="28sp" />
 
     <View
         android:layout_width="match_parent"
@@ -23,11 +23,12 @@
         android:background="@color/colorPrimary" />
 
     <CheckBox
+        android:id="@+id/check_participate"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_below="@+id/text_participate"
         android:layout_centerHorizontal="true"
         android:text="@string/voce_vai_participar"
-        android:textSize="28dp" />
+        android:textSize="28sp" />
 
 </RelativeLayout>
