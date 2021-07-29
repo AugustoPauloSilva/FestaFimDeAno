@@ -12,10 +12,11 @@ public class SecurityPreferences {
     }
 
     public void storeString(String key, String value) {
-        this.mSharedPreferences.edit().putString(key, value);
+        this.mSharedPreferences.edit().putString(key, value).apply();
     }
 
     public String getStoredString(String key) {
+
         return this.mSharedPreferences.getString(key,"");
     }
 }
